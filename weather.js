@@ -11,6 +11,27 @@ const descriptionHeader = document.getElementById("description-header");
 
 const temperatureHeader = document.getElementById("temperature-header");
 
+console.log("-------------------------------------------");
+
+let searchCities = [];
+
+let count = 0;
+
+let data1 = localStorage.getItem("search-history");
+let data2 = JSON.parse(data1);
+let data3 = localStorage.getItem("persist-count");
+let data4 = JSON.parse(data3);
+
+if (data2 == null) {
+  searchCities = [];
+  count = 0;
+} else {
+  searchCities = data2;
+  count = data4;
+}
+
+console.log("-----------------------------------------");
+
 cityBtn.addEventListener("click", function (e) {
   e.preventDefault();
   fetch(
@@ -29,6 +50,19 @@ cityBtn.addEventListener("click", function (e) {
       displayHeader.innerHTML = nameValue;
       temperatureHeader.innerHTML = data["main"]["temp"];
       descriptionHeader.innerHTML = descValue;
+
+      let newCity = { name: nameValue, id: count };
+
+      searchCities.push(newCity);
+      console.log(searchCities);
+
+      let JSON1 = JSON.stringify(searchCities);
+      localStorage.setItem("search-history", JSON1);
+
+      count++;
+
+      let JSON2 = JSON.stringify(count);
+      localStorage.setItem("persist-count", JSON2);
     })
     .catch(err => console.log("Wrong City Name"));
 
