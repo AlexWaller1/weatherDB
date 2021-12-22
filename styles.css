@@ -6,9 +6,37 @@ body {
 
 #city-button {
   margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 #home-page-header {
+  color: silver;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#display-header {
+  color: silver;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#description-header {
+  color: silver;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#temperature-header {
   color: silver;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
