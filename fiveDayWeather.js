@@ -14,9 +14,23 @@ const weatherInfoList = document.getElementById("weather-info-list");
 console.log("--------------------------------------------------");
 console.log("----------------------------------------------");
 
-let searchHistory = [];
+let searchCity = [];
 
 let count = 0;
+
+let data1 = localStorage.getItem("search-city");
+let data2 = JSON.parse(data1);
+
+let data3 = localStorage.getItem("persist-count");
+let data4 = JSON.parse(data3);
+
+if (data2 == null) {
+  searchCity = [];
+  count = 0;
+} else {
+  searchCity = data2;
+  count = data4;
+}
 
 console.log("---------------------------------------------------");
 console.log("----------------------------------------------");
@@ -53,11 +67,30 @@ console.log("----------------------------------------");
 
 fiveDayWeatherBtn.addEventListener("click", function (e) {
   e.preventDefault();
+  const cityName = document.createElement("h2");
+  cityName.className = "city-name-header";
   fetch(
     `http://api.openweathermap.org/data/2.5/forecast?q=${fiveDayWeatherInput.value}&units=imperial&appid=db880e70c46fa251bd18b9c84cfba4cc`
   )
     .then(response => response.json())
     .then(data => {
       console.log(data);
+      console.log(data["city"]["name"]);
+      //................................
+      cityName.innerHTML = data["city"]["name"];
+      weatherInfoList.append(cityName);
+      //................................
+      let city1 = searchCity.map(c1 => c1.name);
+      //................................
+      if (!city1.includes(data["city"]["name"])) {
+        let newCity = { name: data["city"]["name"], id: count };
+        searchCity.push(newCity);
+        let JSON1 = JSON.stringify(searchCity);
+        localStorage.setItem("search-city", JSON1);
+        let JSON2 = JSON.stringify(count);
+        localStorage.setItem("persist-count", JSON2);
+        count++;
+      }
     });
+  fiveDayWeatherInput.value = "";
 });
