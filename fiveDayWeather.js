@@ -88,9 +88,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
         searchCity.push(newCity);
         let JSON1 = JSON.stringify(searchCity);
         localStorage.setItem("search-city", JSON1);
+        count++;
         let JSON2 = JSON.stringify(count);
         localStorage.setItem("persist-count", JSON2);
-        count++;
       }
     });
   fiveDayWeatherInput.value = "";
