@@ -67,6 +67,7 @@ console.log("----------------------------------------");
 
 fiveDayWeatherBtn.addEventListener("click", function (e) {
   e.preventDefault();
+  weatherInfoList.innerHTML = "";
   const cityName = document.createElement("h2");
   cityName.className = "city-name-header";
   fetch(
