@@ -35,7 +35,7 @@ console.log("-----------------------------------------");
 cityBtn.addEventListener("click", function (e) {
   e.preventDefault();
   fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&APPID=db880e70c46fa251bd18b9c84cfba4cc`
+    `http://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=imperial&APPID=db880e70c46fa251bd18b9c84cfba4cc`
   )
     .then(response => response.json())
     // converting from JSON to JavaScript?
