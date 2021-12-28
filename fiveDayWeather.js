@@ -68,8 +68,19 @@ console.log("----------------------------------------");
 fiveDayWeatherBtn.addEventListener("click", function (e) {
   e.preventDefault();
   weatherInfoList.innerHTML = "";
+  //.............................................
   const cityName = document.createElement("h2");
   cityName.className = "city-name-header";
+  //..............................................
+  const currentDate = document.createElement("h3");
+  currentDate.className = "city-date-header";
+  //.............................................
+  const currentTemperature = document.createElement("h3");
+  currentDate.className = "current-temperature-header";
+  //...................................................
+  const currentWeather = document.createElement("h3");
+  currentWeather.className = "current-weather-header";
+  //...................................................
   fetch(
     `http://api.openweathermap.org/data/2.5/forecast?q=${fiveDayWeatherInput.value}&units=imperial&appid=db880e70c46fa251bd18b9c84cfba4cc`
   )
@@ -81,6 +92,15 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
       cityName.innerHTML = data["city"]["name"];
       weatherInfoList.append(cityName);
       //................................
+      currentDate.innerHTML = data["list"][0]["dt_txt"];
+      weatherInfoList.append(currentDate);
+      //.....................................
+      currentTemperature.innerHTML = `${data["list"][0]["main"]["temp"]} Degrees Farenheit`;
+      weatherInfoList.append(currentTemperature);
+      //........................................
+      currentWeather.innerHTML = data["list"][0]["weather"][0]["description"];
+      weatherInfoList.append(currentWeather);
+      //........................................
       let city1 = searchCity.map(c1 => c1.name);
       //................................
       if (!city1.includes(data["city"]["name"])) {
