@@ -15,7 +15,7 @@ const weatherInfoList = document.getElementById("weather-info-list");
 
 const searchHistoryDiv = document.getElementById("search-history-div");
 
-const cityBtnDiv = document.getElementById("city-btn-div");
+const cityBtnList = document.getElementById("city-btn-list");
 
 console.log("--------------------------------------------------");
 console.log("----------------------------------------------");
@@ -115,6 +115,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
   const dayOneWeather = document.createElement("h3");
   dayOneWeather.className = "day-one-weather";
   //...................................................
+  const dayOneImage = document.createElement("img");
+  dayOneImage.className = "day-one-image";
+  //...................................................
   const dayDivider1 = document.createElement("h3");
   dayDivider1.className = "day-divider";
   dayDivider1.innerHTML = "=============";
@@ -167,6 +170,13 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
   const dayFiveWeather = document.createElement("h3");
   dayFiveWeather.className = "day-five-weather";
   //..................................................
+  const tempDivider1 = document.createElement("h3");
+  tempDivider1.className = "temp-divider";
+  tempDivider1.innerHTML = "========================";
+  //..................................................
+  const tempDivider2 = document.createElement("h3");
+  tempDivider2.className = "temp-divider";
+  tempDivider2.innerHTML = "========================";
 
   fetch(
     `http://api.openweathermap.org/data/2.5/forecast?q=${fiveDayWeatherInput.value}&units=imperial&appid=db880e70c46fa251bd18b9c84cfba4cc`
@@ -204,6 +214,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
       //........................................
       dayOneWeather.innerHTML = data["list"][8]["weather"][0]["description"];
       weatherInfoList.append(dayOneWeather);
+      //........................................
+      dayOneImage.src = `http://openweathermap.org/img/wn/${data["list"][0]["weather"][0]["icon"]}@4x.png`;
+      weatherInfoList.append(dayOneImage);
       //........................................
       weatherInfoList.append(dayDivider1);
       //........................................
@@ -249,6 +262,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
       dayFiveWeather.innerHTML = data["list"][39]["weather"][0]["description"];
       weatherInfoList.append(dayFiveWeather);
       //........................................
+      weatherInfoList.append(tempDivider1);
+      //........................................
+      weatherInfoList.append(tempDivider2);
 
       // currentImage.src = data["list"][0]["weather"][0]["icon"];
       // weatherInfoList.append(currentImage);
@@ -273,6 +289,16 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
 
 function displayCities() {
   searchCity.forEach(function (city1) {
-    const cityBtn = document.createElement("button");
+    const cityBtn = document.createElement("h2");
+    cityBtn.className = "city-ul-btn";
+    cityBtn.innerHTML = city1.name;
+    cityBtnList.append(cityBtn);
+    //...........................................
+    cityBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      console.log("header clicked");
+    });
   });
 }
+
+displayCities();
