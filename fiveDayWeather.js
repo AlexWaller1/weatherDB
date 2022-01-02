@@ -309,9 +309,11 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
         count++;
         let JSON2 = JSON.stringify(count);
         localStorage.setItem("persist-count", JSON2);
+        fiveDayWeatherInput.value = "";
+        cityBtnList.innerHTML = "";
+        displayCities();
       }
     });
-  fiveDayWeatherInput.value = "";
 });
 
 function displayCities() {
