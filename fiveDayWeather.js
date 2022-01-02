@@ -131,6 +131,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
   const dayTwoWeather = document.createElement("h3");
   dayTwoWeather.className = "day-two-weather";
   //..................................................
+  const dayTwoImage = document.createElement("img");
+  dayTwoImage.id = "day-two-image";
+  //..................................................
   const dayDivider2 = document.createElement("h3");
   dayDivider2.className = "day-divider-2";
   dayDivider2.innerHTML = "==============";
@@ -228,6 +231,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
       //........................................
       dayTwoWeather.innerHTML = data["list"][16]["weather"][0]["description"];
       weatherInfoList.append(dayTwoWeather);
+      //........................................
+      dayTwoImage.src = `http://openweathermap.org/img/wn/${data["list"][8]["weather"][0]["icon"]}@4x.png`;
+      weatherInfoList.append(dayTwoImage);
       //........................................
       weatherInfoList.append(dayDivider2);
       //........................................
