@@ -1,6 +1,8 @@
 // 5 Day Weather Api
 console.log("Hello Oa");
 
+// http://openweathermap.org/img/wn/${icon}@2x.png
+
 const fiveDayFormDiv = document.getElementById("five-day-form-div");
 
 const fiveDayWeatherInput = document.getElementById("five-day-weather-input");
@@ -10,6 +12,10 @@ const fiveDayWeatherBtn = document.getElementById("five-day-weather-btn");
 const weatherInfoDiv = document.getElementById("weather-info-div");
 
 const weatherInfoList = document.getElementById("weather-info-list");
+
+const searchHistoryDiv = document.getElementById("search-history-div");
+
+const cityBtnDiv = document.getElementById("city-btn-div");
 
 console.log("--------------------------------------------------");
 console.log("----------------------------------------------");
@@ -264,3 +270,9 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
     });
   fiveDayWeatherInput.value = "";
 });
+
+function displayCities() {
+  searchCity.forEach(function (city1) {
+    const cityBtn = document.createElement("button");
+  });
+}
