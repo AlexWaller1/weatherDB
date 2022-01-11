@@ -314,16 +314,21 @@ fiveDayWeatherBtn.addEventListener("click", function (e) {
         displayCities();
       }
     });
+  fiveDayWeatherInput.value = "";
 });
 
 function displayCities() {
   searchCity.forEach(function (city1) {
-    const cityBtn = document.createElement("h2");
+    const cityBtn = document.createElement("li");
     cityBtn.className = "city-ul-btn";
-    cityBtn.innerHTML = city1.name;
+    // cityBtn.innerHTML = city1.name;
+    const cityBtn2 = document.createElement("button");
+    cityBtn2.innerHTML = city1.name;
+    cityBtn2.className = "city-btn-2 btn btn-dark";
+    cityBtn.append(cityBtn2);
     cityBtnList.append(cityBtn);
     //...........................................
-    cityBtn.addEventListener("click", function (e) {
+    cityBtn2.addEventListener("click", function (e) {
       e.preventDefault();
       console.log("header clicked");
       weatherInfoList.innerHTML = "";
